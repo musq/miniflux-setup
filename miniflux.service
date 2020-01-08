@@ -1,0 +1,19 @@
+[Unit]
+Description="Miniflux - RSS feed aggregator"
+Documentation=https://miniflux.app/docs/index.html
+Requires=network-online.target postgresql.service
+After=network-online.target postgresql.service
+ConditionFileNotEmpty=/home/ashish/projects/miniflux-setup/miniflux.conf
+
+[Service]
+Type=simple
+User=miniflux
+Group=miniflux
+ExecStart=/nix/var/nix/profiles/default/bin/miniflux -config-file /home/ashish/projects/miniflux-setup/miniflux.conf
+Restart=on-failure
+RestartSec=5
+# Wait 10 mins to respawn, if it's crashing constantly
+StartLimitInterval=600
+
+[Install]
+WantedBy=multi-user.target
