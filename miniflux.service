@@ -1,5 +1,5 @@
 [Unit]
-Description="Miniflux - RSS feed aggregator"
+Description=Miniflux - RSS feed aggregator
 Documentation=https://miniflux.app/docs/index.html
 Requires=network-online.target postgresql.service
 After=network-online.target postgresql.service
